@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Xunit;
 using Handlebars.Core;
@@ -23,7 +24,9 @@ namespace Handlebars.ContentProvider.FileSystem.Test
             var output = template.Render(null);
             
             //Then the correct output should be rendered
-            Assert.Equal("layout start\r\nThis is the body\r\nlayout end", output);
+            Assert.Equal(
+                NormalizeNewLine("layout start\r\nThis is the body\r\nlayout end"),
+                NormalizeNewLine(output));
         }
         [Fact]
         public void CanLoadAViewWithALayoutInTheRoot()
@@ -40,7 +43,15 @@ namespace Handlebars.ContentProvider.FileSystem.Test
             var output = template.Render(null);
 
             //Then the correct output should be rendered
-            Assert.Equal("layout start\r\nThis is the body\r\nlayout end", output);
+            Assert.Equal(
+                NormalizeNewLine("layout start\r\nThis is the body\r\nlayout end"),
+                NormalizeNewLine(output));
+        }
+
+        private static string NormalizeNewLine(string text)
+        {
+            text = text.Replace("\r", "");
+            return text.Replace("\n", Environment.NewLine);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Handlebars.ContentProvider.FileSystem
             string fullFileName;
             if (!string.IsNullOrWhiteSpace(parentTemplateName))
             {
+                parentTemplateName = FileSystemUtil.NormalizePath(parentTemplateName);
                 fullFileName = Closest(parentTemplateName, fileName);
                 if (fullFileName == null && !string.IsNullOrWhiteSpace(FileSystemConfiguration.PartialsSubPath))
                 {
@@ -53,8 +54,6 @@ namespace Handlebars.ContentProvider.FileSystem
 
         private static string Closest(string fileName, string otherFileName)
         {
-            otherFileName = FileSystemUtil.NormalizePath(otherFileName);
-
             var dir = GetDir(fileName);
             while (dir != null)
             {
@@ -70,7 +69,7 @@ namespace Handlebars.ContentProvider.FileSystem
         {
             if (string.IsNullOrWhiteSpace(currentFilePath))
                 return null;
-            currentFilePath = FileSystemUtil.NormalizePath(currentFilePath);
+
             var parts = currentFilePath.Split(Path.DirectorySeparatorChar);
             return parts.Length == 1
                 ? ""
