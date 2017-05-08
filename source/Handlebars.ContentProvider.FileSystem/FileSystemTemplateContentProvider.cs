@@ -21,7 +21,7 @@ namespace Handlebars.ContentProvider.FileSystem
 
         public string GetTemplateContent(string templateName, string parentTemplateName)
         {
-            var fileName = templateName;
+            var fileName = FileSystemUtil.NormalizePath(templateName);
             if (!fileName.EndsWith(FileSystemConfiguration.FileNameExtension, StringComparison.OrdinalIgnoreCase))
                 fileName += FileSystemConfiguration.FileNameExtension;
 
@@ -46,14 +46,15 @@ namespace Handlebars.ContentProvider.FileSystem
 
             if (string.IsNullOrWhiteSpace(fullFileName))
                 return null;
-            if (FileSystemConfiguration.FileEncoding != null)
-                return File.ReadAllText(fullFileName, FileSystemConfiguration.FileEncoding);
-            else
-                return File.ReadAllText(fullFileName);
+            return FileSystemConfiguration.FileEncoding != null 
+                ? File.ReadAllText(fullFileName, FileSystemConfiguration.FileEncoding) 
+                : File.ReadAllText(fullFileName);
         }
 
-        private string Closest(string fileName, string otherFileName)
+        private static string Closest(string fileName, string otherFileName)
         {
+            otherFileName = FileSystemUtil.NormalizePath(otherFileName);
+
             var dir = GetDir(fileName);
             while (dir != null)
             {
@@ -69,10 +70,11 @@ namespace Handlebars.ContentProvider.FileSystem
         {
             if (string.IsNullOrWhiteSpace(currentFilePath))
                 return null;
-            var parts = currentFilePath.Split('\\', '/');
+            currentFilePath = FileSystemUtil.NormalizePath(currentFilePath);
+            var parts = currentFilePath.Split(Path.DirectorySeparatorChar);
             return parts.Length == 1
                 ? ""
-                : string.Join("/", parts.Take(parts.Length - 1));
+                : string.Join(Path.DirectorySeparatorChar.ToString(), parts.Take(parts.Length - 1));
         }
     }
 }
