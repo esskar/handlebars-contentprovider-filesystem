@@ -1,4 +1,6 @@
-# A file system based template content provider for [Handlebars.Core](https://github.com/esskar/handlebars-core) [![Build Status](https://travis-ci.org/esskar/handlebars-contentprovider-filesystem.svg?branch=master)](https://travis-ci.org/esskar/handlebars-core)
+# Handlebars.ContentProvider.FileSystem [![Build Status](https://travis-ci.org/esskar/handlebars-contentprovider-filesystem.svg?branch=master)](https://travis-ci.org/esskar/handlebars-core)
+
+A file system based template content provider for  [Handlebars.Core](https://github.com/esskar/handlebars-core).
 
 ## Install
 
