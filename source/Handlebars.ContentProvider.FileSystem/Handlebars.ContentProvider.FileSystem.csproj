@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <DebugType>full</DebugType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFrameworks>net40;netstandard1.3</TargetFrameworks>
+    <VersionPrefix>1.8.1</VersionPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <DefineConstants>$(DefineConstants);netstandard</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Sascha Kiefer</Authors>
+    <Copyright>Copyright © 2017 Sascha Kiefer</Copyright>
+    <Description>A file system based template content provider for Handlebars.Core</Description>
+    <PackageIconUrl>https://raw.githubusercontent.com/esskar/handlebars-contentprovider-filesystem/master/handlebars-icon.png</PackageIconUrl>
+    <PackageId>Handlebars.ContentProvider.FileSystem</PackageId>
+    <PackageLicenseUrl>https://opensource.org/licenses/mit</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/esskar/handlebars-contentprovider-filesystem</PackageProjectUrl>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageTags>handlebars;mustache;templating;engine;compiler;filesystem</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/esskar/handlebars-contentprovider-filesystem</RepositoryUrl>
+    <RootNamespace>Handlebars.ContentProvider.FileSystem</RootNamespace>
+    <Company>Sascha Kiefer</Company>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net40'">
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <PackageReference Include="Microsoft.CSharp" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions " Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <PackageReference Include="System.IO">
+      <Version>4.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Handlebars.Core" Version="2.0.3" />
+  </ItemGroup>
+
+</Project>
