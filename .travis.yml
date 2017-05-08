@@ -17,7 +17,7 @@ script:
   - dotnet --info
   - dotnet restore source
   - dotnet build source/Handlebars.ContentProvider.FileSystem/Handlebars.ContentProvider.FileSystem.csproj --configuration Debug --framework netstandard1.3
-  - dotnet build source/Handlebars.Core/Handlebars.ContentProvider.FileSystem.csproj --configuration Release --framework netstandard1.3
+  - dotnet build source/Handlebars.ContentProvider.FileSystem/Handlebars.ContentProvider.FileSystem.csproj --configuration Release --framework netstandard1.3
   - dotnet test source/Handlebars.ContentProvider.FileSystem.Test/Handlebars.ContentProvider.FileSystem.Test.csproj --configuration Debug --framework netcoreapp1.1
   - dotnet test source/Handlebars.ContentProvider.FileSystem.Test/Handlebars.ContentProvider.FileSystem.Test.csproj --configuration Release --framework netcoreapp1.1
 
