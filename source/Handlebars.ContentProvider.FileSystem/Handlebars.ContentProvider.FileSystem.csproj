@@ -46,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Handlebars.Core" Version="2.0.3" />
+    <PackageReference Include="Handlebars.Core" Version="2.1.0" />
   </ItemGroup>
 
 </Project>
